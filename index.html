@@ -14,7 +14,7 @@
       .home-link{min-height:44px;padding:0 4px;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);font-weight:700;cursor:pointer}
       .home{padding-top:clamp(56px,10vh,116px)}.eyebrow{margin:0 0 14px;color:var(--accent)}h1{margin:0;font-size:clamp(2.7rem,7vw,5.7rem);line-height:.95;letter-spacing:-.065em;font-weight:700}.lede{margin:24px 0 0;color:var(--muted);font-size:clamp(1rem,2vw,1.25rem)}
       .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:clamp(48px,8vh,90px)}.card{position:relative;min-height:245px;padding:28px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);text-align:left;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;transition:transform .15s,border-color .15s,box-shadow .15s;touch-action:manipulation}.card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 16px 40px rgb(0 0 0/.08);outline:0}.primary{background:var(--accent);border-color:var(--accent);color:#fff}.primary:hover,.primary:focus-visible{border-color:var(--accent-dark);background:var(--accent-dark)}.primary .num,.primary .detail{color:rgb(255 255 255/.76)}.title{margin-top:auto;font-size:clamp(1.8rem,4vw,2.65rem);line-height:1;letter-spacing:-.045em;font-weight:700}.detail{margin-top:12px;max-width:290px;color:var(--muted);line-height:1.45}.arrow{position:absolute;top:22px;right:26px;font-size:2rem}
-      .survey{padding:clamp(40px,7vh,72px) 0}.survey-card{max-width:820px;margin:0 auto;padding:clamp(28px,6vw,64px);border:1px solid var(--line);background:var(--surface)}.survey-card h1{font-size:clamp(2.35rem,6vw,4.5rem)}blockquote{margin:clamp(32px,6vw,56px) 0 0;padding-left:22px;border-left:4px solid var(--accent);font-size:clamp(1.2rem,2.5vw,1.6rem);line-height:1.55;letter-spacing:-.018em}.survey-launch{margin-top:44px;padding:26px;border:1px solid var(--line);background:var(--paper)}.launch{margin:0 0 20px}.widget{min-height:54px}.loading{color:var(--muted);font-size:.9rem}.footer{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.footer p{margin:0;color:var(--muted);line-height:1.45}.secondary{min-height:52px;flex:0 0 auto;padding:0 22px;border:1px solid var(--ink);border-radius:2px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer}.secondary:hover,.secondary:focus-visible{background:var(--accent);border-color:var(--accent);outline:0}.hidden{display:none!important}
+      .survey{padding:clamp(40px,7vh,72px) 0}.survey-card{max-width:820px;margin:0 auto;padding:clamp(28px,6vw,64px);border:1px solid var(--line);background:var(--surface)}.survey-card h1{font-size:clamp(2.35rem,6vw,4.5rem)}blockquote{margin:clamp(32px,6vw,56px) 0 0;padding-left:22px;border-left:4px solid var(--accent);font-size:clamp(1.2rem,2.5vw,1.6rem);line-height:1.55;letter-spacing:-.018em}.survey-launch{margin-top:44px;padding:26px;border:1px solid var(--line);background:var(--paper)}.launch{margin:0 0 20px}.survey-button{width:100%;min-height:64px;padding:0 22px;border:1px solid var(--accent);border-radius:2px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:space-between;font-size:1.05rem;font-weight:700;cursor:pointer;touch-action:manipulation}.survey-button:hover,.survey-button:focus-visible{background:var(--accent-dark);border-color:var(--accent-dark);outline:0}.survey-button span{font-size:1.5rem}.survey-help{margin:12px 0 0;color:var(--muted);font-size:.9rem}.smcx-passive-feedback>.smcx-btn-primary{display:none!important}.footer{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:24px}.footer p{margin:0;color:var(--muted);line-height:1.45}.secondary{min-height:52px;flex:0 0 auto;padding:0 22px;border:1px solid var(--ink);border-radius:2px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer}.secondary:hover,.secondary:focus-visible{background:var(--accent);border-color:var(--accent);outline:0}.hidden{display:none!important}
       @media(max-width:680px){.app{padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}.grid{grid-template-columns:1fr}.card{min-height:190px}.footer{align-items:stretch;flex-direction:column}.secondary{width:100%}}
       @media(prefers-reduced-motion:reduce){.card{transition:none}}
     </style>
@@ -48,7 +48,8 @@
           <blockquote>Hi! I’m [name], and I’m conducting a short study about how people use the Sculpture Garden. It takes about three minutes. We have a complimentary Walker pass for a future visit as a thank-you. Would you be willing to participate?</blockquote>
           <div class="survey-launch">
             <p class="launch">If they agree, open the survey:</p>
-            <div class="widget" aria-live="polite"><span id="widgetStatus" class="loading">Loading the SurveyMonkey button…</span></div>
+            <button id="surveyButton" class="survey-button" type="button">Open SurveyMonkey <span aria-hidden="true">→</span></button>
+            <p class="survey-help">The survey opens over this page.</p>
           </div>
           <div class="footer"><p>After submitting, return here for the next interview.</p><button id="finishedButton" class="secondary" type="button">Finished — return to start</button></div>
         </div>
@@ -58,13 +59,14 @@
     <script>
       (() => {
         const SURVEY_WIDGET = "https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd_2BJeOk_2FOqw_2FIimgzEtmp0ux1gpiWH_2BvsiTFm_2FMypm8Xz.js";
+        const SURVEY_URL = "https://www.surveymonkey.com/r/5BCD6CX";
         const JOURNEY_MAPPER = "https://anader20.github.io/garden-journey-mapper/";
         const IDLE_RESET_MS = 20 * 60 * 1000;
         const homeView = document.getElementById("homeView");
         const surveyView = document.getElementById("surveyView");
         const homeButton = document.getElementById("homeButton");
         let idleTimer;
-        let openedMapper = false;
+        let openedExternalTool = false;
 
         const reset = () => window.location.reload();
         const restartIdleTimer = () => {
@@ -76,16 +78,22 @@
           if (document.getElementById("smcx-sdk")) return;
           const script = document.createElement("script");
           script.type = "text/javascript"; script.async = true; script.id = "smcx-sdk"; script.src = SURVEY_WIDGET;
-          script.addEventListener("load", () => { document.getElementById("widgetStatus").textContent = "Use the SurveyMonkey button that has appeared on screen."; }, { once: true });
           document.body.appendChild(script);
+        };
+        const openSurvey = (attempt = 0) => {
+          const embeddedButton = document.querySelector(".smcx-passive-feedback > .smcx-btn-primary");
+          if (embeddedButton) { embeddedButton.click(); return; }
+          if (attempt < 20) { window.setTimeout(() => openSurvey(attempt + 1), 100); return; }
+          openedExternalTool = true; window.open(SURVEY_URL, "_blank", "noopener,noreferrer");
         };
         document.getElementById("surveyChoice").addEventListener("click", () => {
           homeView.classList.add("hidden"); surveyView.classList.remove("hidden"); homeButton.classList.remove("hidden"); loadSurveyWidget(); restartIdleTimer(); window.scrollTo(0, 0);
         });
-        document.getElementById("mapperChoice").addEventListener("click", () => { openedMapper = true; window.open(JOURNEY_MAPPER, "_blank", "noopener,noreferrer"); });
+        document.getElementById("surveyButton").addEventListener("click", () => openSurvey());
+        document.getElementById("mapperChoice").addEventListener("click", () => { openedExternalTool = true; window.open(JOURNEY_MAPPER, "_blank", "noopener,noreferrer"); });
         homeButton.addEventListener("click", reset); document.getElementById("finishedButton").addEventListener("click", reset);
         ["pointerdown", "keydown", "touchstart"].forEach(event => window.addEventListener(event, restartIdleTimer));
-        document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && openedMapper) reset(); });
+        document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && openedExternalTool) reset(); });
       })();
     </script>
   </body>
