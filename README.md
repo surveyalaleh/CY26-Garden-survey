@@ -11,6 +11,6 @@ This folder is ready for GitHub Pages and does not require a build step.
 5. Select the `main` branch and `/ (root)`, then save.
 6. Open the GitHub Pages address after GitHub finishes publishing it.
 
-The SurveyMonkey button uses the embedded-website collector supplied for this project. The journey mapper opens in a separate browser tab. The survey screen returns to the start after eight minutes without activity; the home screen also reloads after returning from the journey mapper.
+The SurveyMonkey button uses the embedded-website collector supplied for this project. The journey mapper opens in a separate browser tab. The survey screen returns to the start after 20 minutes without activity; the home screen also reloads after returning from the journey mapper.
 
 Before fieldwork, test the published site on the exact iPad and browser you will use. The embedded survey requires internet access.
