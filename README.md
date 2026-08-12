@@ -11,6 +11,6 @@ This folder is ready for GitHub Pages and does not require a build step.
 5. Select the `main` branch and `/ (root)`, then save.
 6. Open the GitHub Pages address after GitHub finishes publishing it.
 
-The visible **Open SurveyMonkey** button uses the embedded-website collector supplied for this project and opens the survey over the fieldwork page. If the embedded window is blocked, it falls back to opening the same survey in a separate tab. The journey mapper opens in a separate browser tab. The survey screen returns to the start after 20 minutes without activity; the home screen also reloads after returning from the journey mapper.
+The SurveyMonkey website collector is embedded directly beneath the interview approach language. The journey mapper is also embedded in a full-height workspace, so neither tool opens a separate tab. The outer fieldwork page returns to the start after 20 minutes without activity. Journey data remains stored by the mapper itself until it is exported or cleared.
 
 Before fieldwork, test the published site on the exact iPad and browser you will use. The embedded survey requires internet access.
