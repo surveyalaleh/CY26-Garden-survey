@@ -1,0 +1,17 @@
+{
+  "name": "CY26 Garden Research",
+  "short_name": "Garden Research",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f3ef",
+  "theme_color": "#f5f3ef",
+  "icons": [
+    {
+      "src": "garden-research-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

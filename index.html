@@ -4,18 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#f5f3ef" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Garden Research" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="garden-research-icon.png" />
     <title>CY26 Garden Research</title>
     <style>
       :root{--ink:#171717;--muted:#696969;--paper:#f5f3ef;--surface:#fff;--line:#d9d5cf;--accent:#e52428;--accent-dark:#c9171c}
       *{box-sizing:border-box}html,body{min-height:100%}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}button{font:inherit}.hidden{display:none!important}
-      .app{min-height:100dvh;padding:max(28px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(28px,env(safe-area-inset-left))}header,.view{width:min(100%,1100px);margin:0 auto}header{min-height:46px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-      .label,.eyebrow,.num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.label,.num{color:var(--muted)}.eyebrow{margin:0 0 14px;color:var(--accent)}.home-link{min-height:44px;padding:0 4px;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);font-weight:700;cursor:pointer}
+      .app{min-height:100dvh;padding:max(28px,env(safe-area-inset-top)) max(28px,env(safe-area-inset-right)) max(28px,env(safe-area-inset-bottom)) max(28px,env(safe-area-inset-left))}header,.view{width:min(100%,1100px);margin:0 auto}header{position:sticky;z-index:20;top:0;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);background:var(--paper)}
+      .label,.eyebrow,.num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.label,.num{color:var(--muted)}.eyebrow{margin:0 0 14px;color:var(--accent)}.home-link{min-height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:999px;background:var(--ink);color:#fff;font-weight:700;cursor:pointer;touch-action:manipulation}.home-link:hover,.home-link:focus-visible{background:var(--accent);border-color:var(--accent);outline:3px solid rgb(229 36 40/.2);outline-offset:2px}
       .home{padding-top:clamp(56px,10vh,116px)}h1{margin:0;font-size:clamp(2.7rem,7vw,5.7rem);line-height:.95;letter-spacing:-.065em;font-weight:700}.lede{margin:24px 0 0;color:var(--muted);font-size:clamp(1rem,2vw,1.25rem)}
       .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:clamp(48px,8vh,90px)}.card{position:relative;min-height:245px;padding:28px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);text-align:left;text-decoration:none;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;transition:transform .15s,border-color .15s,box-shadow .15s;touch-action:manipulation}.card:hover,.card:focus-visible{transform:translateY(-3px);border-color:var(--ink);box-shadow:0 16px 40px rgb(0 0 0/.08);outline:0}.primary{background:var(--accent);border-color:var(--accent);color:#fff}.primary:hover,.primary:focus-visible{border-color:var(--accent-dark);background:var(--accent-dark)}.primary .num,.primary .detail{color:rgb(255 255 255/.76)}.title{margin-top:auto;font-size:clamp(1.8rem,4vw,2.65rem);line-height:1;letter-spacing:-.045em;font-weight:700}.detail{margin-top:12px;max-width:320px;color:var(--muted);line-height:1.45}.arrow{position:absolute;top:22px;right:26px;font-size:2rem}
       .survey{padding:clamp(40px,7vh,72px) 0}.survey-card{max-width:820px;margin:0 auto;padding:clamp(28px,6vw,64px);border:1px solid var(--line);background:var(--surface)}.survey-card h1{font-size:clamp(2.35rem,6vw,4.5rem)}blockquote{margin:clamp(32px,6vw,56px) 0 0;padding-left:22px;border-left:4px solid var(--accent);font-size:clamp(1.2rem,2.5vw,1.6rem);line-height:1.55;letter-spacing:-.018em}.start-survey{width:100%;min-height:64px;margin-top:36px;padding:16px 24px;border:0;border-radius:3px;background:var(--accent);color:#fff;font-size:1.1rem;font-weight:700;cursor:pointer;touch-action:manipulation}.start-survey:hover,.start-survey:focus-visible{background:var(--accent-dark);outline:3px solid rgb(229 36 40/.22);outline-offset:3px}
-      .survey-page{width:min(100%,1200px);padding:24px 0}.survey-page-heading{padding:10px 0 22px}.survey-page-heading h1{font-size:clamp(2rem,5vw,3.8rem)}.frame{display:block;width:100%;border:1px solid var(--line);background:#fff}.survey-frame{height:calc(100dvh - 175px);min-height:700px}
+      .survey-page{width:min(100%,1200px);padding:12px 0 0}.survey-page-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:0 0 10px}.survey-page-heading .eyebrow{margin:0}.survey-page-heading h1{font-size:clamp(1.35rem,3vw,2rem);letter-spacing:-.04em}.frame{display:block;width:100%;border:1px solid var(--line);background:#fff}.survey-frame{flex:1;min-height:0;overscroll-behavior:contain}
+      body.kiosk-survey{height:100dvh;overflow:hidden}body.kiosk-survey .app{height:100dvh;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);padding-top:max(10px,env(safe-area-inset-top));padding-bottom:max(10px,env(safe-area-inset-bottom))}body.kiosk-survey .survey-page{height:100%;min-height:0;display:flex;flex-direction:column}
       .mapper{width:min(100%,1440px);padding-top:24px}.workspace-heading{padding:18px 0 22px;display:flex;align-items:center;justify-content:space-between;gap:24px}.workspace-heading .eyebrow{margin:0}.workspace-heading h1{margin-top:8px;font-size:clamp(2rem,5vw,3.8rem)}.workspace-heading>p{max-width:330px;margin:0;color:var(--muted);line-height:1.45;text-align:right}.mapper-frame{height:calc(100dvh - 190px);min-height:650px;border:1px solid var(--line)}
-      @media(max-width:680px){.app{padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}.grid{grid-template-columns:1fr}.card{min-height:190px}.embed-heading,.workspace-heading{align-items:stretch;flex-direction:column}.workspace-heading>p{text-align:left}.survey-frame{height:82dvh}.mapper-frame{height:calc(100dvh - 220px);min-height:560px}}
+      @media(max-width:680px){.app{padding:max(20px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}.grid{grid-template-columns:1fr}.card{min-height:190px}.home-link{padding:0 14px}.survey-page-heading h1{font-size:1.3rem}.mapper-frame{height:calc(100dvh - 220px);min-height:560px}}
       @media(prefers-reduced-motion:reduce){.card{transition:none}}
     </style>
   </head>
@@ -23,7 +29,7 @@
     <main class="app">
       <header>
         <span class="label">CY26 Garden research</span>
-        <button id="homeButton" class="home-link hidden" type="button">Return to start</button>
+        <button id="homeButton" class="home-link hidden" type="button">Back to start</button>
       </header>
 
       <section id="homeView" class="view home" aria-labelledby="homeTitle">
@@ -46,12 +52,13 @@
           <p class="eyebrow">Visitor interview</p><h1 id="surveyTitle">Approach language</h1>
           <blockquote>Hi! I’m [name], and I’m conducting a short study about how people use the Sculpture Garden. It takes about three minutes. We have a complimentary Walker pass for a future visit as a thank-you. Would you be willing to participate?</blockquote>
           <button id="startSurvey" class="start-survey" type="button">They agreed — begin survey&nbsp; →</button>
+          <button id="declinedButton" class="home-link" type="button" style="width:100%;margin-top:18px;background:#fff;color:#171717">They declined — back to start</button>
         </div>
       </section>
 
       <section id="surveyView" class="view survey-page hidden" aria-labelledby="embeddedSurveyTitle">
         <div class="survey-page-heading">
-          <p class="eyebrow">Visitor survey</p><h1 id="embeddedSurveyTitle">CY26 Garden research</h1>
+          <p class="eyebrow">Visitor survey</p><h1 id="embeddedSurveyTitle">Scroll inside the survey below</h1>
         </div>
         <iframe class="frame survey-frame" data-src="https://www.surveymonkey.com/r/Q6HTBJ6?embedded=1" title="CY26 Garden research SurveyMonkey interview"></iframe>
       </section>
@@ -69,12 +76,13 @@
         let idleTimer;
         const reset = () => window.location.reload();
         const restartIdleTimer = () => { window.clearTimeout(idleTimer); if (homeView.classList.contains("hidden")) idleTimer = window.setTimeout(reset, IDLE_RESET_MS); };
-        const show = view => { [homeView,approachView,surveyView].forEach(section => section.classList.add("hidden")); view.classList.remove("hidden"); homeButton.classList.remove("hidden"); restartIdleTimer(); window.scrollTo(0,0); };
+        const show = view => { [homeView,approachView,surveyView].forEach(section => section.classList.add("hidden")); view.classList.remove("hidden"); homeButton.classList.remove("hidden"); homeButton.textContent = view === surveyView ? "Finished — next visitor" : "Back to start"; document.body.classList.toggle("kiosk-survey", view === surveyView); restartIdleTimer(); window.scrollTo(0,0); };
         document.getElementById("surveyChoice").addEventListener("click", () => show(approachView));
         document.getElementById("startSurvey").addEventListener("click", () => {
           if (!surveyFrame.src) surveyFrame.src = surveyFrame.dataset.src;
           show(surveyView);
         });
+        document.getElementById("declinedButton").addEventListener("click", reset);
         homeButton.addEventListener("click", reset);
         ["pointerdown","keydown","touchstart"].forEach(event => window.addEventListener(event,restartIdleTimer));
       })();
